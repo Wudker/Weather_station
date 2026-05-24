@@ -16,7 +16,6 @@ The complete system consists of two cooperating devices:
 * Temperature measurement
 * Humidity measurement
 * Atmospheric pressure measurement
-* VOC air quality estimation
 * Wind speed measurement
 * Rain detection
 * Battery voltage monitoring
@@ -31,7 +30,6 @@ The complete system consists of two cooperating devices:
 
 * ESP32
 * BME280
-* SGP40
 * SS41F Hall sensor
 * Rain sensor
 * RTC module
