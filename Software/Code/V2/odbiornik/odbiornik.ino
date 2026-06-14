@@ -7,8 +7,8 @@
 #include <math.h>
 #include "PogodynkaRxTypes.h"
 
-const char* ssid     = "UPC0772731_24Ghz";
-const char* password = "sumyhfguw3zf5Hte";
+const char* ssid     = "Your_WiFI_name";
+const char* password = "WiFi_password";
 
 WebServer server(80);
 
