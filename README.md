@@ -82,3 +82,7 @@ Future improvements:
 * optimized power management,
 * extended weather data visualization,
 * cloud integration support.
+
+* ### Technologies
+
+`ESP32` `ESP-NOW` `BME280`  `Solar power supply` `Li-Ion` `WebServer` `Low-power operation`
