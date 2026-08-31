@@ -7,21 +7,21 @@
 #include <esp_now.h>
 #include "driver/rtc_io.h"
 #include "PogodynkaTypes.h"
-//#define RTC_FORCE_SET_ON_BOOT 0
+#define RTC_FORCE_SET_ON_BOOT 0
 Adafruit_BME280 bme;
 Adafruit_SGP40  sgp;
 Rtc_Pcf8563     rtc;
 const int RTC_INT_PIN = 27;      
 uint8_t peerAddress[] = {0x28, 0x56, 0x2F, 0x71, 0x92, 0x34};
 esp_now_peer_info_t peerInfo;
-const uint8_t SET_DAY   = 17;
-const uint8_t SET_WDAY  = 4;
-const uint8_t SET_MONTH = 2;
+const uint8_t SET_DAY   = 22;
+const uint8_t SET_WDAY  = 6;
+const uint8_t SET_MONTH = 8;
 const uint8_t SET_CENT  = 0;
 const uint8_t SET_YEAR  = 26;
-const uint8_t SET_HOUR  = 1;
-const uint8_t SET_MIN   = 15;
-const uint8_t SET_SEC   = 45;
+const uint8_t SET_HOUR  = 4;
+const uint8_t SET_MIN   = 11;
+const uint8_t SET_SEC   = 0;
 bool bme_ok = false;
 const int Hall_pin          = 17;
 const int WaterSensor       = 19;
@@ -109,6 +109,16 @@ void IRAM_ATTR HallISR() {Hall_count++;}
 void setup() {
   Serial.begin(baudrate);
   Wire.begin();
+
+#if RTC_FORCE_SET_ON_BOOT
+  rtc.initClock();
+  rtc.setDate(SET_DAY, SET_WDAY, SET_MONTH, SET_CENT, SET_YEAR);
+  rtc.setTime(SET_HOUR, SET_MIN, SET_SEC);
+  while (true) {
+    delay(1000);
+  }
+#endif
+
   pinMode(RTC_INT_PIN, INPUT_PULLUP);
   rtc.clearAlarm();
   bme_ok = BME_init();

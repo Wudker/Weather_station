@@ -25,6 +25,7 @@ static const char TOPIC_RAIN[]              = MQTT_ROOT "/rain_mv";
 static const char TOPIC_BATTERY[]           = MQTT_ROOT "/battery_mv";
 static const char TOPIC_BATTERY_PERCENT[]   = MQTT_ROOT "/battery_pct";
 static const char TOPIC_SUN[]               = MQTT_ROOT "/sun_v";
+static const char TOPIC_STATUS[]            =MQTT_ROOT "/status";
 
 WiFiClient wifiClient;
 PubSubClient mqttClient(wifiClient);
@@ -116,6 +117,8 @@ bool mqttConnected()
 {
     return WiFi.status() == WL_CONNECTED && mqttClient.connected();
 }
+
+
 
 bool mqttPublishMeasurement(const Dane_ESP& d)
 {
